@@ -1,14 +1,9 @@
-require("core.options")
-require("core.plugins")
-require("core.keymaps")
+-- set leader keys before anything else so every <leader> mapping
+-- (including lazy.nvim's lazy-loaded keys) resolves to the right key
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
-require("core.colorscheme")
-require("core.lsp")
-require("core.cmdline")
-require("core.discord")
-
-require("nvim-tree").setup()
-require("el").setup()
-require("gitsigns").setup()
-
-
+require('user/keymaps')
+require('user/options')
+require('user/lsp')
+require('lazy-startup')

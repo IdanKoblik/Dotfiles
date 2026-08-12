@@ -200,7 +200,7 @@ overview {
 spawn-at-startup "sh" "-c" "~/Projects/personal/zaatar/main.py -u | ~/Projects/personal/baguette/baguette --full"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "dunst"
-spawn-at-startup "sh" "-c" "awww-daemon & sleep 1 && awww img ~/Pictures/linux.png"
+spawn-at-startup "sh" "-c" "awww-daemon & sleep 1 && awww img ~/Pictures/linux2.png"
 environment {
   XDG_CURRENT_DESKTOP "niri"
 }

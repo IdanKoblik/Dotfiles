@@ -32,14 +32,38 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'modus-vivendi-deuteranopia)
+;; (setq doom-theme 'modus-vivendi-deuteranopia)
+(setq doom-theme 'grayscale)
 
-(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'normal))
+(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 24 :weight 'normal))
 
 (setq display-line-numbers-current-absolute t)
-(custom-set-faces!
- '(line-number :foreground "#8a8a8a" :background unspecified :height 1.0)
- '(line-number-current-line :foreground "#ffffff" :background unspecified :height 1.0))
+
+;; gruber-darker is a vanilla-Emacs theme: it defines no faces for doom-modeline
+;; (and leaves mode-line/mode-line-inactive the same background). Teach Doom's
+;; chrome the gruber palette:
+;;   bg #181818  bg+1 #282828  fg #e4e4ef  yellow #ffdd33  green #73c936
+;;   red #f43841  brown #cc8c3c  quartz #95a99f  niagara #96a6c8
+;;
+;; Scoped to the theme so these hardcoded colors don't leak into `grayscale'
+;; (themes/grayscale-theme.el), which carries its own doom-modeline faces.
+(custom-theme-set-faces! 'gruber-darker
+  '(line-number              :foreground "#52494e" :background unspecified :height 1.0)
+  '(line-number-current-line :foreground "#ffdd33" :background unspecified :height 1.0)
+
+  '(mode-line                     :background "#282828" :foreground "#e4e4ef")
+  '(mode-line-inactive            :background "#181818" :foreground "#52494e")
+  '(doom-modeline-bar             :background "#ffdd33")
+  '(doom-modeline-bar-inactive    :background "#282828")
+  '(doom-modeline-buffer-file     :foreground "#e4e4ef" :weight bold)
+  '(doom-modeline-buffer-modified :foreground "#f43841")
+  '(doom-modeline-project-dir     :foreground "#96a6c8")
+  '(doom-modeline-info            :foreground "#73c936")
+  '(doom-modeline-warning         :foreground "#cc8c3c")
+  '(doom-modeline-urgent          :foreground "#f43841"))
+
+;; closer to tsoding's plain modeline
+(setq doom-modeline-icon nil)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -82,7 +106,7 @@
 ;; they are implemented.
 
 (map! :leader "j c" 'harpoon-clear)
-(map! :leader "j f" 'harpoon-toggle-file)
+(map! :leader "j f" 'harpoon-add-file)
 (map! :leader "1" 'harpoon-go-to-1)
 (map! :leader "2" 'harpoon-go-to-2)
 (map! :leader "3" 'harpoon-go-to-3)
@@ -93,7 +117,4 @@
 (map! :leader "8" 'harpoon-go-to-8)
 (map! :leader "9" 'harpoon-go-to-9)
 
-(require 'elcord)
-(elcord-mode)
-
-(add-to-list 'default-frame-alist '(alpha-background . 90))
+;; (add-to-list 'default-frame-alist '(alpha-background . 90))

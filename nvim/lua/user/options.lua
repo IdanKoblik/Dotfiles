@@ -1,0 +1,55 @@
+local options = {
+    backup = false,
+    -- clipboard = 'unnamedplus',
+    cmdheight = 1,
+    -- completeopt = { 'menu', 'menuone', 'noselect' },
+    conceallevel = 0,
+    fileencoding = 'utf-8',
+    hlsearch = false,
+    ignorecase = false,
+    mouse = 'a',
+    pumheight = 10,
+    -- smartcase = true,
+    smartindent = false,
+    cindent = false,
+    splitbelow = true,
+    splitright = true,
+    swapfile = false,
+    termguicolors = true,
+    timeoutlen = 500,
+    undofile = true,
+    updatetime = 220,
+    writebackup = false,
+    expandtab = true, -- convert tabs to spaces
+    shiftwidth = 4, -- the number of spaces inserted for each indentation
+    tabstop = 4, -- insert 4 spaces for a tab
+    cursorline = false,
+    number = true,
+    relativenumber = true,
+    numberwidth = 3,
+    signcolumn = 'yes',
+    wrap = false,
+    scrolloff = 10,
+    sidescrolloff = 7,
+    foldmethod = 'manual', -- set to 'expr' for treesitter based folding
+    foldexpr = 'v:lua.vim.treesitter.foldexpr()',
+    hidden = true, -- required to keep multiple buffers and open multiple buffers
+    shell = 'bash', -- the default shell that some neovim commands will use
+    title = true, -- set the title of window to the value of the titlestring
+    titlestring = 'Not Emacs - %F', -- what the title of the window will be set to
+    indentexpr = '',
+    -- showtabline = 1,
+    background = 'dark',
+    -- spell = true,
+    spelloptions = 'camel',
+    ruler = false,
+    showcmd = false,
+    autochdir = false,
+    grepprg = 'rg --vimgrep',
+    winborder = 'rounded',
+    showmode = false,
+}
+
+for k, v in pairs(options) do
+    vim.opt[k] = v
+end
